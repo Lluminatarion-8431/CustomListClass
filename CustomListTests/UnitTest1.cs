@@ -226,7 +226,7 @@ namespace CustomListTests
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void Remove_RemovingValueNotInTheCustomList_LastIndexOfCustomListStaysTheSame()
+        public void Remove_RemovingValueNotInTheCustomList_ListIndexOfCustomListStaysTheSame()
         {
             // arrange
             CustomList<int> testList = new CustomList<int>();
