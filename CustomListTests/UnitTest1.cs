@@ -99,7 +99,7 @@ namespace CustomListTests
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void Remove_RemovingOneValueFromTheCustomList_RemovingAddedValueInTheIndex()
+        public void Remove_RemovingOneValueFromTheCustomList_RemovingAddedValueAtTheIndexOne()
         {
             // arrange
             CustomList<int> testList = new CustomList<int>();
@@ -199,10 +199,33 @@ namespace CustomListTests
             // act
             testList.Remove(itemToRemove);
             actual = testList.Count;
+             
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Remove_RemovingValueNotInTheCustomList_CountOfCustomListStaysTheSame()
+        {
+            // arrange
+            CustomList<int> testList = new CustomList<int>();
+            testList.Add(10);
+            testList.Add(20);
+            testList.Add(30);
+            testList.Add(40);
+            testList.Add(50);
+            testList.Add(60);
+            int itemToRemove = 1000;
+            int expected = 6;
+            int actual;
+
+            // act
+            testList.Remove(itemToRemove);
+            actual = testList.Count;
 
             // assert
             Assert.AreEqual(expected, actual);
         }
+
         // what happens if you add multiple things (or add to a CustomList that already has some values)?
         // what happens to the last-added item?
         // what happens to the Count?
