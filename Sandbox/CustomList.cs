@@ -10,19 +10,55 @@ namespace Sandbox
     {
         // member variables (HAS A)
         private T[] items;
-        List<testList> testLists;
+        private int count;
+        private int capacity;
 
         // constructor (SPAWNER)
         public CustomList()
         {
-            items = new T[4];
-            items.add();
+            count = 0;
+            capacity = 4;
+            items = new T[capacity];
         }
 
         // member methods (CAN DO)
         public void Add(T item)
         {
-            return 10;
+            items[count] = item;
+            count++;
         }
+        public T this[int index]
+        {
+            get
+            {
+                if (index < count && index >=0)
+                {
+                    return items[index];
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+            }
+            set
+            {
+                items[index] = value;
+            }
+        }
+        public int Count
+        {
+            get
+            {
+                return count;
+            }
+        }
+        public int Capacity
+        {
+            get
+            {
+                return capacity;
+            }
+        }
+        
     }
 }

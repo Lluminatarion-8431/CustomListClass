@@ -226,7 +226,7 @@ namespace CustomListTests
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void Remove_RemovingFirstValueInTheCustomList_LastIndexOfCustomListStaysTheSame()
+        public void Remove_RemovingValueNotInTheCustomList_LastIndexOfCustomListStaysTheSame()
         {
             // arrange
             CustomList<int> testList = new CustomList<int>();
@@ -234,13 +234,13 @@ namespace CustomListTests
             testList.Add(20);
             testList.Add(30);
             testList.Add(40);
-            int itemToRemove = 10;
+            int itemToRemove = 1000;
             int expected = 40;
             int actual;
 
             // act
             testList.Remove(itemToRemove);
-            actual = testList[2];
+            actual = testList[3];
 
             // assert
             Assert.AreEqual(expected, actual);
