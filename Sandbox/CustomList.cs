@@ -95,6 +95,17 @@ namespace Sandbox
                 return capacity;
             }
         }
-        
+        public override string ToString()
+        {
+            //CustomList<T> list = new CustomList<T>();
+            string value = "";
+
+            for (int i = 0; i < count; i++)
+            {
+                value += items[i].ToString();
+            }
+            return value;
+        }
+
     }
 }
