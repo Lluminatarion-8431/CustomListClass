@@ -26,7 +26,42 @@ namespace Sandbox
         {
             items[count] = item;
             count++;
+            if (count == capacity)
+            {
+                capacity = capacity * 2;
+                T[] tempArray = new T[capacity];
+                for (int i = 0; i < count; i++)
+                {
+                    tempArray[i] = items[i];
+                }
+                items = tempArray;
+            }
         }
+        public void Remove(T item)
+        {
+            T[] tempArray = new T[capacity];
+            bool hasFound = false;
+            for (int i = 0; i < count; i++)
+            {
+                if (items[i].Equals(item) && hasFound == false)
+                {
+                    hasFound = true;
+                    count--;
+                }
+
+                if (hasFound == true)
+                {
+
+                    tempArray[i] = items[i + 1];
+                }
+                else
+                {
+                    tempArray[i] = items[i];
+                }
+            }
+            items = tempArray;
+        }
+
         public T this[int index]
         {
             get
@@ -45,6 +80,7 @@ namespace Sandbox
                 items[index] = value;
             }
         }
+       
         public int Count
         {
             get
