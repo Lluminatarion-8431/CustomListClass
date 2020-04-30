@@ -22,6 +22,10 @@ namespace Sandbox
         }
 
         // member methods (CAN DO)
+
+        //I want the ability to add an object//
+        //to an instance of my custom-built list//
+        //class by imitating the C# Add() method.//
         public void Add(T item)
         {
             items[count] = item;
@@ -37,6 +41,9 @@ namespace Sandbox
                 items = tempArray;
             }
         }
+        //I want the ability to remove an object from an//
+        //instance of my custom-built list class by//
+        //imitating the C# Remove() method.//
         public void Remove(T item)
         {
             T[] tempArray = new T[capacity];
@@ -61,12 +68,15 @@ namespace Sandbox
             }
             items = tempArray;
         }
-
+        
+        //I want to create a C# indexer so that I can make the//
+        //objects in my list accessible via index. I want to properly//
+        //ensure that a user cannot access an out-of-bounds index.//
         public T this[int index]
         {
             get
             {
-                if (index < count && index >=0)
+                if (index < count && index >= 0)
                 {
                     return items[index];
                 }
@@ -80,7 +90,8 @@ namespace Sandbox
                 items[index] = value;
             }
         }
-       
+        //I want a Capacity property implemented on the custom-built//
+        //list class, so that I can publicly see the size of my private array.//
         public int Count
         {
             get
@@ -88,6 +99,8 @@ namespace Sandbox
                 return count;
             }
         }
+        //I want a Capacity property implemented on the custom-built list class,//
+        //so that I can publicly see the size of my private array.//
         public int Capacity
         {
             get
@@ -95,17 +108,8 @@ namespace Sandbox
                 return capacity;
             }
         }
-        public override string ToString()
-        {
-            //CustomList<T> list = new CustomList<T>();
-            string value = "";
-
-            for (int i = 0; i < count; i++)
-            {
-                value += items[i].ToString();
-            }
-            return value;
-        }
-
+        
+        
     }
 }
+

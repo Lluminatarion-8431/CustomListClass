@@ -253,6 +253,38 @@ namespace CustomListTests
         // what happens to the Count?
 
         // what happens if you add more items than the initial Capacity of the CustomList?
+
+        [TestMethod]
+        public void Add_AddingTwoInstancesOfTheCustomListClass_OverLoadingPlusOperator()
+        {
+            // arrange
+            CustomList<int> testList1 = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> testList2 = new CustomList<int>() { 2, 4, 6 };
+            CustomList<int> addOperator = new CustomList<int>();
+            string expected = "135246";
+
+            // act
+            addOperator = testList1 + testList2;
+            string actual = addOperator.ToString();
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+        public void Subract_SubtractingTwoInstancesOfTheCustomListClass_OverLoadingMinusOperator()
+        {
+            // arrange
+            CustomList<int> testList1 = new CustomList<int>() { 1, 3, 5};
+            CustomList<int> testList2 = new CustomList<int>() { 2, 1, 6 };
+            CustomList<int> minusOperator = new CustomList<int>();
+            string expected = "3, 5";
+
+            // act
+            minusOperator = testList1 - testList2;
+            string actual = minusOperator.ToString();
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 
 }
