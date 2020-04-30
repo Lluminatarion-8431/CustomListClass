@@ -270,6 +270,7 @@ namespace CustomListTests
             // assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
         public void Subract_SubtractingTwoInstancesOfTheCustomListClass_OverLoadingMinusOperator()
         {
             // arrange
@@ -284,6 +285,32 @@ namespace CustomListTests
 
             // assert
             Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Override_OverridingToStringMethod_ConvertingCustomListToString()
+        {
+            // arrange
+            CustomList<int> testList = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 3;
+            int value3 = 5;
+            int value4 = 2;
+            int value5 = 4;
+            int value6 = 6;
+            string expected = "135246";
+            string actual;
+            // act
+            testList.Add(value1);
+            testList.Add(value2);
+            testList.Add(value3);
+            testList.Add(value4);
+            testList.Add(value5);
+            testList.Add(value6);
+            actual = testList.ToString();
+
+            //assert
+            Assert.AreEqual(expected, actual);
+
         }
     }
 
