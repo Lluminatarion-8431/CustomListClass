@@ -12,9 +12,19 @@ namespace Sandbox
     {
         static void Main(string[] args)
         {
-
+			//try
+			//{
+			//	WriteTxt();
+			//	Readtxt();
+			//}
+			//catch (Exception e)
+			//{
+			//	Console.WriteLine(e);
+			//	Console.ReadKey();
+			//	throw;
+			//}
         }
-
+		
     }
 }
 

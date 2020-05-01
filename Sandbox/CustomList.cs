@@ -33,9 +33,56 @@ namespace Sandbox
             }
         }
 
-        //I want the ability to add an object//
-        //to an instance of my custom-built list//
-        //class by imitating the C# Add() method.//
+        /// <summary>
+        /// C# indexer with out-of-bounds index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public T this[int index]
+        {
+            get
+            {
+                if (index < count && index >= 0)
+                {
+                    return items[index];
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+            }
+            set
+            {
+                items[index] = value;
+            }
+        }
+
+        /// <summary>
+        /// A read-only Count property returning the count of the number of elements
+        /// </summary>
+        public int Count
+        {
+            get
+            {
+                return count;
+            }
+        }
+
+        /// <summary>
+        /// Capacity property retunring the size of a private array.
+        /// </summary>
+        public int Capacity
+        {
+            get
+            {
+                return capacity;
+            }
+        }
+
+        /// <summary>
+        /// Add Method
+        /// </summary>
+        /// <param name="item"></param>
         public void Add(T item)
         {
             items[count] = item;
@@ -51,9 +98,11 @@ namespace Sandbox
                 items = tempArray;
             }
         }
-        //I want the ability to remove an object from an//
-        //instance of my custom-built list class by//
-        //imitating the C# Remove() method.//
+        
+        /// <summary>
+        /// Remove Method
+        /// </summary>
+        /// <param name="item"></param>
         public void Remove(T item)
         {
             T[] tempArray = new T[capacity];
@@ -78,49 +127,11 @@ namespace Sandbox
             }
             items = tempArray;
         }
-        
-        //I want to create a C# indexer so that I can make the//
-        //objects in my list accessible via index. I want to properly//
-        //ensure that a user cannot access an out-of-bounds index.//
-        public T this[int index]
-        {
-            get
-            {
-                if (index < count && index >= 0)
-                {
-                    return items[index];
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
-            }
-            set
-            {
-                items[index] = value;
-            }
-        }
-        //I want a Capacity property implemented on the custom-built//
-        //list class, so that I can publicly see the size of my private array.//
-        public int Count
-        {
-            get
-            {
-                return count;
-            }
-        }
-        //I want a Capacity property implemented on the custom-built list class,//
-        //so that I can publicly see the size of my private array.//
-        public int Capacity
-        {
-            get
-            {
-                return capacity;
-            }
-        }
 
-        //As a developer, I want to be able to override the ToString() method//
-        // that converts the contents of the custom list to a string.//
+        /// <summary>
+        /// ToString() method converting the contents of the custom list to a string.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             
@@ -132,8 +143,12 @@ namespace Sandbox
             }
             return value;
         }
-        //As a developer, I want to be able to overload the + operator,//
-        //so that I can add two instances of the custom list class together.//
+        /// <summary>
+        /// Overloading the + operator adding two instances together.
+        /// </summary>
+        /// <param name="list1"></param>
+        /// <param name="list2"></param>
+        /// <returns></returns>
         public static CustomList<T> operator +(CustomList<T> list1, CustomList<T> list2)
         {
             CustomList<T> list = new CustomList<T>();
@@ -148,8 +163,13 @@ namespace Sandbox
             }
             return list;
         }
-        //I want to be able to overload the – operator, so that I can subtract one instance//
-        //of a custom list class from another instance of a custom list class.//
+
+        /// <summary>
+        /// Overloading the – operator subtracting one instance from another instance.
+        /// </summary>
+        /// <param name="list1"></param>
+        /// <param name="list2"></param>
+        /// <returns></returns>
         public static CustomList<T> operator -(CustomList<T> list1, CustomList<T> list2)
         {
             CustomList<T> list = new CustomList<T>();
@@ -165,7 +185,12 @@ namespace Sandbox
             }
             return list;
         }
-        // what if the list is not the same size
+        /// <summary>
+        /// Zipping two list class instances together in a zipper
+        /// </summary>
+        /// <param name="odd"></param>
+        /// <param name="even"></param>
+        /// <returns></returns>
         public static CustomList<T> Zip(CustomList<T>odd, CustomList<T>even)
         {
             int i = 0;
@@ -188,7 +213,10 @@ namespace Sandbox
             return zipList;
         }
 
-        //Sorting Algorithm: Bubble Sort//
+        /// <summary>
+        /// Sorting Algorithm: Bubble Sort
+        /// </summary>
+        /// <returns></returns>
         public CustomList<T> Sort()  
         {
             int i;
@@ -213,7 +241,43 @@ namespace Sandbox
             l1[m] = l1[n];
             l1[n] = temporary;
         }
-        
+
+        /// <summary>
+        /// .txt file
+        /// </summary>
+        static void WriteTxt()
+        {
+            try
+            {
+                WriteTxt();
+                //Readtxt();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                //Console.ReadKey();
+                throw;
+            }
+            Console.WriteLine("");
+            StreamWriter sw = new StreamWriter("../../../txtFile.txt", true);
+            sw.WriteLine("Syntax: ");
+            sw.WriteLine("Parameters: ");
+            sw.WriteLine("Return Type: ");
+            sw.Close();
+        }
+        //static void Readtxt()
+        //{
+        //    Console.WriteLine("Reading -Operator Overload Details: ");
+        //    StreamReader sr = new StreamReader("../../../txtFile.txt");
+        //    string line = sr.ReadLine();
+        //    while (line != null)
+        //    {
+        //        Console.WriteLine(line);
+        //        line = sr.ReadLine();
+        //    }
+        //    sr.Close();
+        //}
+
     }
 }
 
