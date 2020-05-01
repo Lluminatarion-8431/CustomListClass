@@ -1,14 +1,15 @@
 ﻿using System;
 using System.IO;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Security.Authentication;
 
 namespace Sandbox
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable where T : IComparable
     {
         // member variables (HAS A)
         private T[] items;
@@ -24,6 +25,13 @@ namespace Sandbox
         }
 
         // member methods (CAN DO)
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                yield return items[i];
+            }
+        }
 
         //I want the ability to add an object//
         //to an instance of my custom-built list//
@@ -179,15 +187,32 @@ namespace Sandbox
 
             return zipList;
         }
-        //static async Task WriteFileAsync(string dir, string file, string content)
-        //{
-        //    Console.WriteLine("Async Write File has started");
-        //    using (StreamWriter outputFile = new StreamWriter(Path.Combine(dir, file)) )
-        //    {
-        //        await outputFile.WriteAsync(content);
-        //    }
-        //    Console.WriteLine("Async Write File has completed");
-        //}
+
+        //Sorting Algorithm: Bubble Sort//
+        public CustomList<T> Sort()  
+        {
+            int i;
+            int j;
+
+            for (j = count-1; j > 0; j--)
+            {
+                for (i = 0; i < j; i++)
+                {
+                    if (items[i].CompareTo(items[i+1]) > 0)
+                    {
+                        exchange(this, i, i + 1);
+                    }
+                }
+            }
+            return this;
+        }
+        public void exchange(CustomList<T> l1, int m, int n)
+        {
+            T temporary;
+            temporary = l1[m];
+            l1[m] = l1[n];
+            l1[n] = temporary;
+        }
         
     }
 }

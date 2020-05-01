@@ -7,7 +7,10 @@ namespace CustomListTests
 {
     [TestClass]
     public class UnitTest1
-    {
+    { 
+        /// <summary>
+        /// Adding An Object Test Methods
+        /// </summary>
         [TestMethod]
         public void Add_AddingOneValueToEmptyCustomList_AddedValueGoesToIndexZero()
         {
@@ -58,6 +61,7 @@ namespace CustomListTests
             Assert.AreEqual(40, testList[3]);
 
         }
+
         [TestMethod]
         public void Add_AddingValueToCustomListThatAlreadyHasValue_CountOfCustomListIncrements()
         {
@@ -78,6 +82,7 @@ namespace CustomListTests
             Assert.AreEqual(expected, actual);
 
         }
+
         [TestMethod]
         public void Add_AddingValueToCustomListThatAlreadyHasValue_AddedValueGoesToLastIndex()
         {
@@ -98,6 +103,10 @@ namespace CustomListTests
             // assert
             Assert.AreEqual(expected, actual);
         }
+
+        /// <summary>
+        /// Removing An Object Test Methods
+        /// </summary>
         [TestMethod]
         public void Remove_RemovingOneValueFromTheCustomList_RemovingAddedValueAtTheIndexOne()
         {
@@ -117,6 +126,7 @@ namespace CustomListTests
             // assert
             Assert.AreEqual(expected, actual);
         }
+
         [TestMethod]
         public void Remove_RemovingFirstValueFromTheCustomList_CountOfCustomListDecrement()
         {
@@ -136,6 +146,7 @@ namespace CustomListTests
             // assert
             Assert.AreEqual(expected, actual);
         }
+
         [TestMethod]
         public void Remove_RemovingFirstValueFromTheCustomList_ChecksForNextListItem()
         {
@@ -157,6 +168,7 @@ namespace CustomListTests
             // assert
             Assert.AreEqual(expected, actual);
         }
+
         [TestMethod]
         public void Remove_RemovingLastValueFromTheCustomList_ChecksForNewCapacity()
         {
@@ -203,6 +215,7 @@ namespace CustomListTests
             // assert
             Assert.AreEqual(expected, actual);
         }
+
         [TestMethod]
         public void Remove_RemovingValueNotInTheCustomList_CountOfCustomListStaysTheSame()
         {
@@ -225,6 +238,7 @@ namespace CustomListTests
             // assert
             Assert.AreEqual(expected, actual);
         }
+
         [TestMethod]
         public void Remove_RemovingValueNotInTheCustomList_ListIndexOfCustomListStaysTheSame()
         {
@@ -246,14 +260,10 @@ namespace CustomListTests
             Assert.AreEqual(expected, actual);
         }
 
-
-
-        // what happens if you add multiple things (or add to a CustomList that already has some values)?
-        // what happens to the last-added item?
-        // what happens to the Count?
-
-        // what happens if you add more items than the initial Capacity of the CustomList?
-
+        /// <summary>
+        /// Overloading +Operator Test Methods
+        /// 
+        /// </summary>
         [TestMethod]
         public void Add_AddingTwoInstancesOfTheCustomListClass_OverLoadingPlusOperator()
         {
@@ -276,6 +286,10 @@ namespace CustomListTests
             // assert
             Assert.AreEqual(expected, actual);
         }
+
+        /// <summary>
+        /// Overloading -Operator Test Method
+        /// </summary>
         [TestMethod]
         public void Subract_SubtractingTwoInstancesOfTheCustomListClass_OverLoadingMinusOperator()
         {
@@ -298,6 +312,10 @@ namespace CustomListTests
             // assert
             Assert.AreEqual(expected, actual);
         }
+
+        /// <summary>
+        /// Overriding ToString Test Method
+        /// </summary>
         [TestMethod]
         public void Override_OverridingToStringMethod_ConvertingCustomListToString()
         {
@@ -324,6 +342,10 @@ namespace CustomListTests
             Assert.AreEqual(expected, actual);
 
         }
+
+        /// <summary>
+        /// Adding Two Instances To A Zipper
+        /// </summary>
         [TestMethod]
         public void Zip_ZippingTwoInstancesTogether_OddAndEvenZipper()
         {
