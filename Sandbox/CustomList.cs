@@ -1,8 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace Sandbox
 {
@@ -108,7 +110,84 @@ namespace Sandbox
                 return capacity;
             }
         }
-        
+
+        //As a developer, I want to be able to override the ToString() method//
+        // that converts the contents of the custom list to a string.//
+        public override string ToString()
+        {
+            
+            string value = "";
+
+            for (int i = 0; i < count; i++)
+            {
+                value += items[i].ToString();
+            }
+            return value;
+        }
+        //As a developer, I want to be able to overload the + operator,//
+        //so that I can add two instances of the custom list class together.//
+        public static CustomList<T> operator +(CustomList<T> list1, CustomList<T> list2)
+        {
+            CustomList<T> list = new CustomList<T>();
+
+            for (int i = 0; i < list1.count; i++)
+            {
+                list.Add(list1[i]);
+            }
+            for (int i = 0; i < list2.count; i++)
+            {
+                list.Add(list2[i]);
+            }
+            return list;
+        }
+        //I want to be able to overload the – operator, so that I can subtract one instance//
+        //of a custom list class from another instance of a custom list class.//
+        public static CustomList<T> operator -(CustomList<T> list1, CustomList<T> list2)
+        {
+            CustomList<T> list = new CustomList<T>();
+            list = list1 + list2;
+
+            for (int i = 0; i < list1.count; i++)
+            {
+                list.Remove(list1[i]);
+            }
+            for (int i = 0; i < list2.count; i++)
+            {
+                list.Remove(list2[i]);
+            }
+            return list;
+        }
+        // what if the list is not the same size
+        public static CustomList<T> Zip(CustomList<T>odd, CustomList<T>even)
+        {
+            int i = 0;
+            CustomList<T> zipList = new CustomList<T>();
+
+            do
+            {
+                if (i + 1 <= odd.count)
+                {
+                    zipList.Add(odd[i]);
+                }
+                if (i + 1 <= even.count)
+                {
+                    zipList.Add(even[i]);
+                }
+                i++;
+            }
+            while ((i + 1 <= odd.count) || (i + 1 <= even.count));
+
+            return zipList;
+        }
+        //static async Task WriteFileAsync(string dir, string file, string content)
+        //{
+        //    Console.WriteLine("Async Write File has started");
+        //    using (StreamWriter outputFile = new StreamWriter(Path.Combine(dir, file)) )
+        //    {
+        //        await outputFile.WriteAsync(content);
+        //    }
+        //    Console.WriteLine("Async Write File has completed");
+        //}
         
     }
 }
